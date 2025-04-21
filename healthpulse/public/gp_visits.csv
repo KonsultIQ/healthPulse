@@ -1,0 +1,11 @@
+visit_id,clinic_name,visit_date,patient_age_group,patient_gender,symptoms,diagnosis,medications_prescribed,facility_name,district,response_time_min,patient_satisfaction
+GP000001,Al Barsha Clinic,2023-01-10,25-44,Male,"Fatigue, excessive thirst",Type 2 diabetes,Metformin,Al Barsha Clinic,Barsha,18,94
+GP000002,Jumeirah Primary Care,2023-01-12,5-14,Female,"Cough, runny nose",Common cold,Paracetamol,Jumeirah Primary Care,Jumeirah,22,87
+GP000003,Deira Health Center,2023-01-14,45-64,Female,"Headache, dizziness",Hypertension,Amlodipine,Deira Health Center,Deira,30,90
+GP000004,Dubai Marina Clinic,2023-01-15,25-44,Male,Back pain,Muscle strain,Ibuprofen,Dubai Marina Clinic,Marina,15,92
+GP000005,Al Qusais Clinic,2023-01-18,65+,Male,Chest pain,Angina,Nitroglycerin,Al Qusais Clinic,Qusais,25,85
+GP000006,Mirdif Health Center,2023-01-20,15-24,Female,"Anxiety, insomnia",Anxiety disorder,Escitalopram,Mirdif Health Center,Mirdif,20,89
+GP000007,Business Bay Clinic,2023-01-22,0-4,Male,"Fever, ear pain",Otitis media,Amoxicillin,Business Bay Clinic,Business Bay,14,95
+GP000008,Palm Jumeirah Clinic,2023-01-25,25-44,Female,Abdominal pain,Gastritis,Omeprazole,Palm Jumeirah Clinic,Palm Jumeirah,19,91
+GP000009,Downtown Dubai Clinic,2023-01-28,45-64,Male,Joint pain,Osteoarthritis,Diclofenac,Downtown Dubai Clinic,Downtown,28,88
+GP000010,International City Clinic,2023-01-30,25-44,Female,Sore throat,Pharyngitis,Azithromycin,International City Clinic,International City,17,93

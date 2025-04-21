@@ -1,0 +1,202 @@
+For the ﬁnance challenge using real ﬁnancial data is not possible so teams must synthesize their own data or ﬁnd open datasets. We have compiled a few 
+datasets for guidance and a paper outlining some techniques for creating synthetic ﬁnancial data. 
+Datasets
+Synthetic ﬁnancial data on GitHub: link  
+Teams encouraged to explore kaggle  for open datasets 
+Guidance 
+Article on generating synthetic ﬁnancial data: link 
+Live Data Sources 
+Here is a list of potential live data sources teams can use. This list is by no means exhaustive and if access to any is restricted teams are encouraged to 
+synthesize some data and create a mock API. Please don’t put API keys in your source code on GitHub. 
+Source Type Details
+Interest rates API Trading economics API 
+Stock market API Alpha vantage API , Polygon IO  
+Live news API Bing news API , Reuters API 
+Property market API Estated API 
+Crypto API CoinMarketCap API 
+13
+
+IN COLLABORATION WITH 
+FINANCE - PERSONAS 
+Persona 1:  Fatima, 34 — Working Mother in Downtown Dubai 
+-Proﬁle:  Mid-level marketing executive, lives with her husband and two kids. 
+-Needs:  Wants to save consistently for a future mortgage, but has ﬂuctuating childcare and school 
+fee expenses. 
+-Challenge:  Hard to manage savings while still enjoying family outings and self-care. 
+Persona 2:  Omar, 28 — Freelancer in Dubai Marina 
+-Proﬁle:  Freelance graphic designer with unpredictable income. 
+-Needs:  Wants to buy a property in the next 3 years. 
+-Challenge:  Finds it hard to decide when to save or spend, especially with varying project-based 
+earnings. 
+Persona 3: Reem, 45 — Executive in DIFC 
+-Proﬁle:  High-income earner, single, but has ﬂuctuating luxury lifestyle spending. 
+-Needs:  Wants a smart savings tool that helps balance indulgence with long-term planning. 
+-Challenge:  Her spending habits change seasonally due to travel, events, and fashion trends. We have created 3 personas per challenge to give you some inspiration and guidance as to the types of challenges you will be solving. We 
+would like teams to generate some more personas for the challenge and demonstrate how your tool can solve problems and add value to 
+your users. 
+14
+
+IN COLLABORATION WITH 
+LOGISTICS 
+15
+
+IN COLLABORATION WITH 
+LOGISTICS - HACKER BRIEF 
+MASTER QUESTION TRADITIONAL HEAL TH LOGISTICS DO NOT ADJUST TO DEMAND IN PREDICTIVE AND REAL TIME WAYS. 
+How can agentic ai logistics assistant integrate hospital, gp and social media data to predict and respond to outbreaks and ﬂuctuations 
+in demand? 
+WHAT ARE WE 
+OPTIMISING THE SYSTEM 
+FOR? A future where healthcare supply meets real-time demand! 
+Prevent medicine shortages in high-risk areas. 
+Reduce waste by optimising stock redistribution. 
+Support faster response to outbreaks and seasonal health trends. 
+Improve efﬁciency and cost-effectiveness in healthcare logistics. 
+WHAT ARE THE KEY USE 
+CASES? “I am a logistics manager for a national pharmacy chain. I need a system that anticipates demand for pharmaceuticals based on 
+real-time health trends.” 
+SOURCE DATA DX Open Data, Synthetic Data 
+ACCESS TBD 
+PROCESSING Agentic AI-powered health logistics assistant that: 
+Integrates hospital, GP, and social media data to predict outbreaks and medicine demand. 
+Automatically adjusts supply chains to ensure the right pharmaceuticals reach the right locations. 
+Minimises waste by redistributing surplus medicines to high-need areas. 
+Provides insights and reports to stakeholders on health trends and inventory management. 
+TOUCH POINTS / 
+INTERFACES Web, mobile, smart wearables. 
+STARTERS FOR TEN Real-time Health Monitoring: AI analyzes illness trends from multiple data sources, clinical and syndromic. 
+Dynamic Logistics Optimization: Adjusts pharmaceutical distribution automatically. 
+Proactive Public Health Support: Ensures medicine availability before shortages occur. 
+STRETCH GOAL Add suppliers data 
+CONSIDERATIONS Automatically adjusts orders back up the chain 
+16
+
+IN COLLABORATION WITH 
+LOGISTICS - DATA SOURCES 
+We encourage teams to spend at least 1 day compiling data their Agentic AI systems will need. Whether this be pulling from open 
+datasets or creating synthetic data to work on all routes are accepted and encouraged so long as they are in the public domain. Here is 
+some speciﬁc guidance for each project: 
+For the logistics challenge using real healthcare and logistics data is not possible so teams must synthesize their own data or ﬁnd open datasets. We have 
+compiled some datasets.  
+Datasets
+Example kaggle dataset of healthcare data: link 
+Guidance 
+Paper on generating healthcare data: link 
+GitHub project for generating synthetic patient data: link 
+Live Data Sources 
+Here is a list of potential live data sources teams can use. This list is by no means exhaustive and if access to any is restricted teams are encouraged to 
+synthesize some data and create a mock API. Please don’t put API keys in your source code on GitHub. 
+Source Type Details
+World health info APIs WHO API 
+Drug database API FDB drug database 
+Mapping API Google maps , OpenStreetMap 
+Live news API Bing news API 
+17
+
+IN COLLABORATION WITH 
+LOGISTICS - PERSONAS 
+Persona 1:  Dr. Ayesha, 42 — Public Health Director, Dubai Health Authority 
+-Proﬁle:  Oversees health policy and emergency response. 
+-Needs:  Wants real-time data insights to prevent medicine shortages and respond to health 
+spikes. 
+-Challenge:  Current supply chains can’t react fast enough to data from GPs, ERs, and public 
+reports. 
+Persona 2: Imran, 39 — Regional Logistics Manager, Pharmaceutical Distributor 
+-Proﬁle:  Manages medicine delivery and stock levels across UAE. 
+-Needs:  Wants predictive analytics to optimize delivery routes and stock priorities. 
+-Challenge:  Misses emerging demand due to outdated reporting cycles. 
+Persona 3: Leila, 31 — Pharmacist in Deira 
+-Proﬁle:  Works at a busy community pharmacy. 
+-Needs:  Wants to avoid running out of common medicines, especially during sudden surges in ﬂu 
+or allergy seasons. 
+-Challenge:  No visibility into upcoming public health trends. We have created 3 personas per challenge to give you some inspiration and guidance as to the types of challenges you will be solving. We 
+would like teams to generate some more personas for the challenge and demonstrate how your tool can solve problems and add value to 
+your users. 
+18
+
+IN COLLABORATION WITH 
+ESTATE AGENT 
+INDUSTRY CHALLENGE 
+19
+
+IN COLLABORATION WITH 
+ESTATE AGENT  - HACKER BRIEF 
+MASTER QUESTION How can Agentic AI continuously monitor rental markets, identify engaging opportunities or risks and proactively recommend 
+investment and pricing strategies? 
+WHAT ARE WE OPTIMISING THE 
+SYSTEM FOR? Help decision makers get educated insights on real estate trends and have conversational optimisation of insight with Agentic AI 
+assistants, to get the best special value of properties 
+WHAT ARE THE KEY USE CASES? Large Real Estate Companies need to calculate property value, before taking decisions on where to invest and how to value their 
+existing property rent 
+SOURCE DATA  e.g. property ﬁnder (public) and property monitor (private login required) 
+ACCESS Anything open source 
+PROCESSING Real Estate Market Price Screening Tool 
+Crawl property market sites and listings e.g. property ﬁnder (public) and property monitor (private login required) to answer 
+queries related to property market e.g. what are average property rental prices for 3 bedrooms in downtown Dubai, what are 
+average property rental prices for 3 bedrooms in x,y,z neighbourhoods, what are average sizes of 2 bedroom apartments, which 
+neighbourhoods have average 1 bedroom apartment sizes between xx sqm and yy sqm (we can develop further standard queries 
+if required based on most typical data required) 
+TOUCH POINTS / INTERFACES Web, mobile 
+STARTERS FOR TEN TrendSpotter: scans listings for emerging rental shifts and growth hotspots 
+ROI Forecaster: analyzes current and historical rents to predict yield opportunities 
+PriceAdvisor: chats to recommend optimal rents and value ‑add strategies 
+STRETCH GOAL Suggest multiple variants and value increase strategies 
+CONSIDERATIONS Tenant Agents giving same 
+20 
+
+IN COLLABORATION WITH 
+ESTATE AGENT - DATA SOURCES 
+Teams are encouraged to spend at least 1 day compiling good datasets and getting access to relevant APIs. If datasets or APIs aren’t 
+available teams are encouraged to explore web scraping as a means to acquire relevant data. 
+Datasets
+Dubai tenancy agreement dataset: link 
+Dubai real estate portal: link 
+Explore kaggle  for many open source datasets 
+Live Data Sources 
+There are not many APIs available for the real estate market so teams are encouraged to explore web scraping as a means to acquire the relevant live data. 
+Here are some APIs we found: 
+DIFC real estate API: link to press release 
+Openstreetmap API: link 
+Mashvisor API: link 
+Zillow real estate metrics API: link 
+21
+
+IN COLLABORATION WITH 
+ESTATE AGENT - PERSONAS 
+Persona 1: Robert, 45 — International Portfolio Investor 
+-Proﬁle:  Dubai ‑based investor with a diversiﬁed global real ‑estate portfolio. 
+-Needs:  Automated alerts on undervalued neighborhoods and shifting rental yields to guide 
+acquisitions. 
+-Challenge:  Manual, multi ‑market monitoring is too slow and fragmented to capture timely 
+opportunities. 
+Persona 2: Amina, 29 — Residential Property Manager 
+-Proﬁle:  Oversees leasing and pricing for a 120 ‑unit apartment building in Al Barsha. 
+-Needs:  Dynamic rent ‑adjustment recommendations and proactive vacancy ‑management tactics. 
+-Challenge:  Currently reacts only at lease renewals rather than adjusting rents in real time. 
+Persona 3: Faisal, 50 — CFO, Regional Real ‑Estate Developer 
+-Proﬁle:  CFO leading ﬁnance and acquisitions for a GCC mixed ‑use development ﬁrm. 
+-Needs:  Regular scenario analyses and value ‑add investment proposals with projected ROI. 
+-Challenge:  Reliance on static models and stale reports prevents agile strategy and forecasting. We have created 3 personas per challenge to give you some inspiration and guidance as to the types of challenges you will be 
+solving. We would like teams to generate some more personas for the challenge and demonstrate how your tool can solve 
+problems and add value to your users. 
+22 
+
+IN COLLABORATION WITH 
+OWN CHALLENGE 
+23 
+
+IN COLLABORATION WITH 
+OWN CHALLENGE  - HACKER BRIEF 
+MASTER QUESTION 
+WHAT ARE WE OPTIMISING THE 
+SYSTEM FOR? 
+WHAT ARE THE KEY USE CASES? 
+SOURCE DATA 
+ACCESS 
+PROCESSING 
+TOUCH POINTS / INTERFACES 
+STARTERS FOR TEN 
+STRETCH GOAL 
+CONSIDERATIONS 
+24 
+

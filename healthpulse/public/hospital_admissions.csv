@@ -1,0 +1,11 @@
+admission_id,facility_name,admission_date,patient_age_group,patient_gender,diagnosis,admission_type,severity
+ADM000001,Dubai Hospital,2026-01-15,45-64,Male,Type 2 diabetes mellitus,planned,3
+ADM000002,Rashid Hospital,2026-01-16,25-44,Female,Acute upper respiratory infection,emergency,6
+ADM000003,Latifa Hospital,2026-01-18,0-4,Male,Common cold,emergency,5
+ADM000004,Dubai Hospital,2026-01-20,65+,Female,Essential hypertension,planned,4
+ADM000005,Rashid Hospital,2026-01-22,25-44,Male,Low back pain,emergency,7
+ADM000006,Hatta Hospital,2026-01-25,15-24,Male,Concussion,emergency,8
+ADM000007,Dubai Hospital,2026-01-28,45-64,Female,Major depressive disorder,planned,5
+ADM000008,Mediclinic City Hospital,2026-01-30,25-44,Male,Gastritis,emergency,6
+ADM000009,Saudi German Hospital,2026-02-02,5-14,Female,Acute upper respiratory infection,emergency,5
+ADM000010,Dubai Hospital,2026-02-05,45-64,Male,Heart failure,emergency,9

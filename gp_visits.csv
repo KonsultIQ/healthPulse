@@ -1,0 +1,11 @@
+visit_id,clinic_name,visit_date,patient_age_group,patient_gender,symptoms,diagnosis,medications_prescribed
+GP000001,Al Barsha Clinic,2023-01-10,25-44,Male,"Fatigue, excessive thirst",Type 2 diabetes,Metformin
+GP000002,Jumeirah Primary Care,2023-01-12,5-14,Female,"Cough, runny nose",Common cold,Paracetamol
+GP000003,Deira Health Center,2023-01-14,45-64,Female,"Headache, dizziness",Hypertension,Amlodipine
+GP000004,Dubai Marina Clinic,2023-01-15,25-44,Male,Back pain,Muscle strain,Ibuprofen
+GP000005,Al Qusais Clinic,2023-01-18,65+,Male,Chest pain,Angina,Nitroglycerin
+GP000006,Mirdif Health Center,2023-01-20,15-24,Female,"Anxiety, insomnia",Anxiety disorder,Escitalopram
+GP000007,Business Bay Clinic,2023-01-22,0-4,Male,"Fever, ear pain",Otitis media,Amoxicillin
+GP000008,Palm Jumeirah Clinic,2023-01-25,25-44,Female,Abdominal pain,Gastritis,Omeprazole
+GP000009,Downtown Dubai Clinic,2023-01-28,45-64,Male,Joint pain,Osteoarthritis,Diclofenac
+GP000010,International City Clinic,2023-01-30,25-44,Female,Sore throat,Pharyngitis,Azithromycin

@@ -1,0 +1,191 @@
+/* HealthPulse Dashboard Global Styles */
+:root {
+  --konsultiq-orange: #D56B27;
+  --konsultiq-blue: #2791D3;
+  --light-orange: #f8d3bc;
+  --light-blue: #c2e3f7;
+  --dark-gray: #333333;
+  --medium-gray: #666666;
+  --light-gray: #f5f5f5;
+  --white: #ffffff;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+}
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+header {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo h1 {
+  margin: 0;
+  color: var(--konsultiq-blue);
+  font-size: 28px;
+}
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  background-color: var(--konsultiq-orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+.dashboard-controls {
+  display: flex;
+  gap: 15px;
+}
+.dashboard-controls select {
+  padding: 8px 12px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 5px;
+  background-color: var(--white);
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.dashboard-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.dashboard-card.full-width {
+  grid-column: span 2;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.card-title {
+  margin: 0;
+  color: var(--konsultiq-blue);
+  font-size: 18px;
+}
+.card-content {
+  height: 300px;
+  position: relative;
+}
+.card-footer {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--medium-gray);
+  display: flex;
+  justify-content: space-between;
+}
+.insight-tag {
+  background-color: var(--light-blue);
+  color: var(--konsultiq-blue);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.alert-tag {
+  background-color: var(--light-orange);
+  color: var(--konsultiq-orange);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.metric-box {
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.metric-value {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: var(--konsultiq-blue);
+}
+.metric-box.positive .metric-value {
+  color: #28a745;
+}
+.metric-box.negative .metric-value {
+  color: #dc3545;
+}
+.metric-label {
+  font-size: 14px;
+  color: var(--medium-gray);
+}
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.inventory-table th, .inventory-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--light-gray);
+  text-align: left;
+}
+.inventory-table th {
+  background-color: var(--light-blue);
+  color: var(--konsultiq-blue);
+}
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.status-critical {
+  background-color: #dc3545;
+}
+.status-warning {
+  background-color: #ffc107;
+}
+.status-optimal {
+  background-color: #28a745;
+}
+.map-container {
+  height: 100%;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/dubai_map_placeholder.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
