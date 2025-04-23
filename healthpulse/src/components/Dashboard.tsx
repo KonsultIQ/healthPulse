@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
       <div className="dashboard-grid">
         <HealthTrendCard timeRange={timeRange} district={district} />
         <DiseaseDistributionCard timeRange={timeRange} district={district} />
-        <GeoMapCard timeRange={timeRange} district={district} />
+        <GeoMapCard />
         <InventoryCard timeRange={timeRange} district={district} />
         <MetricsCard timeRange={timeRange} district={district} />
         <SocialMediaCard timeRange={timeRange} district={district} />

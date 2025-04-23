@@ -69,8 +69,13 @@ const InventoryCard: React.FC<{ timeRange: string; district: string }> = ({ time
         )}
       </div>
       <div className="card-footer">
-        <span>{filtered.filter(item => parseInt(item.current_stock) <= parseInt(item.min_stock_level)).length} medications require immediate reordering</span>
-        <div className="alert-tag">Action Required</div>
+        <span style={{color:'#c00',fontWeight:600,display:'flex',alignItems:'center',gap:6}}>
+          {filtered.filter(item => parseInt(item.current_stock) <= parseInt(item.min_stock_level)).length === 1 &&
+            <span style={{fontSize:22,verticalAlign:'middle'}}>⚠️</span>
+          }
+          {filtered.filter(item => parseInt(item.current_stock) <= parseInt(item.min_stock_level)).length} medications require immediate reordering
+        </span>
+        <div className="alert-tag" style={{background:'#c00',color:'#fff',fontWeight:700,borderRadius:6,padding:'2px 10px',marginLeft:10}}>Action Required</div>
       </div>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <button aria-label="Close" onClick={() => setModalOpen(false)} style={{ position: 'absolute', top: 12, right: 12, fontSize: 18, background: 'none', border: 'none', cursor: 'pointer', zIndex: 2 }}>&times;</button>

@@ -1,126 +1,124 @@
-import React, { useState, useEffect } from 'react';
-import Modal from '../Modal';
-import { loadCSV } from '../../utils/csvLoader';
+import React, { useEffect, useState } from 'react';
+import Papa from 'papaparse';
+import ReactMarkdown from 'react-markdown';
 
-const CSV_URL = '/environmental_data.csv';
+const CSV_PATH = '/agentic/inferences.csv';
 
-const GeoMapCard: React.FC<{ timeRange: string; district: string }> = ({ timeRange, district }) => {
-  const [envData, setEnvData] = useState<any[]>([]);
+type InferenceRow = {
+  date: string;
+  region: string;
+  hospital_flu_cases: string;
+  gp_flu_cases: string;
+  hospital_respiratory_cases: string;
+  gp_respiratory_cases: string;
+  flu_mentions: string;
+  predicted_demand: string;
+  interpretation: string;
+};
+
+const GeoMapCard: React.FC = () => {
+  const [latest, setLatest] = useState<InferenceRow | null>(null);
   const [loading, setLoading] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [hovered, setHovered] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    loadCSV(CSV_URL)
-      .then(data => {
-        setEnvData(data);
+    setError(false);
+    fetch(CSV_PATH)
+      .then(res => {
+        if (!res.ok) throw new Error('Network error');
+        return res.text();
+      })
+      .then(csvText => {
+        const parsed = Papa.parse<InferenceRow>(csvText, { header: true, skipEmptyLines: true });
+        if (!parsed.data || parsed.data.length === 0) {
+          setLatest(null);
+          setLoading(false);
+          return;
+        }
+        // Find the row with the latest date
+        const sorted = parsed.data.sort((a, b) => {
+          if (!a.date || !b.date) return 0;
+          return a.date > b.date ? -1 : 1;
+        });
+        setLatest(sorted[0]);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
   }, []);
 
-  // For the demo, show a table of environmental readings filtered by district
-  const filtered = envData.filter(item =>
-    (!district || district === 'All' || item.district?.includes(district))
-  );
+  let cardContent;
+  if (loading) {
+    cardContent = <div style={{textAlign:'center',color:'#888'}}>Loading recommendations...</div>;
+  } else if (error) {
+    cardContent = <div style={{color:'#c00',textAlign:'center'}}>Error loading prediction data.</div>;
+  } else if (!latest) {
+    cardContent = (
+      <div style={{textAlign:'center',color:'#888',padding:'24px 0'}}>
+        <div style={{fontSize:40,marginBottom:8}}>🧑‍⚕️</div>
+        <div>No predictions yet—your proactive insights will appear here soon!</div>
+      </div>
+    );
+  } else {
+    // Remove extra carriage returns and excess blank lines
+    let cleanedInterpretation = latest.interpretation
+      .replace(/(\d+\.)\s*\n+/g, '$1 ') // number-dot
+      .replace(/\n{2,}/g, '\n') // collapse multiple blank lines
+      .replace(/\n\s*\n/g, '\n'); // remove whitespace-only lines
+    cardContent = (
+      <div style={{
+        padding: '0 8px',
+        maxHeight: 240,
+        overflowY: 'auto',
+        wordBreak: 'break-word',
+        whiteSpace: 'pre-line',
+        fontSize: 15,
+        lineHeight: 1.65,
+      }}>
+        <ReactMarkdown
+          components={{
+            h1: ({node, ...props}) => <h2 style={{fontSize: '1.15rem', fontWeight: 700, margin: '10px 0 6px', color: '#2791D3'}} {...props} />, 
+            h2: ({node, ...props}) => <h3 style={{fontSize: '1.05rem', fontWeight: 600, margin: '8px 0 4px', color: '#1976d2'}} {...props} />, 
+            h3: ({node, ...props}) => <h4 style={{fontSize: '1.01rem', fontWeight: 600, margin: '7px 0 3px', color: '#1976d2'}} {...props} />, 
+            strong: ({node, ...props}) => <strong style={{color: '#333', fontWeight: 600}} {...props} />, 
+            ul: ({node, ...props}) => <ul style={{marginLeft: 16, marginBottom: 0, marginTop: 0, paddingLeft: 0, color: '#444'}} {...props} />, 
+            ol: ({node, ...props}) => <ol style={{marginLeft: 16, marginBottom: 0, marginTop: 0, paddingLeft: 0, color: '#444'}} {...props} />, 
+            li: ({node, ...props}) => <li style={{marginBottom: 1, paddingLeft: 2}} {...props} />, 
+            blockquote: ({node, ...props}) => <blockquote style={{borderLeft: '3px solid #2791D3', margin: '6px 0', padding: '3px 10px', background: '#f2f7fa', color: '#1976d2'}} {...props} />, 
+            p: (props) => {
+              // Remove margin if next sibling is a list
+              const style: React.CSSProperties = {margin: '1px 0'};
+              // Remove bottom margin if this paragraph is immediately before a list
+              // (ReactMarkdown does not provide sibling info, so we keep margin minimal)
+              return <p style={style}>{props.children}</p>;
+            },
+            code: ({node, ...props}) => <code style={{background: '#f4f4f4', padding: '1px 4px', borderRadius: 3, fontSize: '0.97em'}} {...props} />, 
+          }}
+        >
+          {cleanedInterpretation}
+        </ReactMarkdown>
+      </div>
+    );
+  }
 
   return (
-    <div className="dashboard-card" tabIndex={0} role="button" style={{cursor:'pointer'}} onClick={() => setModalOpen(true)}>
+    <div className="dashboard-card" style={{minHeight: 340}}>
       <div className="card-header">
-        <h2 className="card-title">Geographic Health Map</h2>
-        <div className="insight-tag">Spatial Analysis</div>
+        <h2 className="card-title">Prediction & Recommendations</h2>
       </div>
-      <div 
-        className="card-content map-container"
-        style={{
-          position: 'relative', minHeight: 260, background: '#f8f8f8', borderRadius: 12, overflow: 'hidden', boxShadow: '0 2px 12px 0 #0001', width: '100%', height: 260, maxHeight: 320, maxWidth: '100%', cursor: 'pointer',
-          transition: 'box-shadow 0.25s, border 0.25s',
-          boxShadow: hovered ? '0 4px 24px 0 #2791d333, 0 0 0 2px #2791D3' : '0 2px 12px 0 #0001',
-          border: hovered ? '2px solid #2791D3' : 'none',
-        }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        {/* Map base image */}
-        <img 
-          src="/dubai_map_placeholder.png" 
-          alt="Dubai Map" 
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            objectPosition: 'center',
-            display: 'block',
-            background: 'transparent',
-            pointerEvents: 'none',
-            transition: 'opacity 0.2s, filter 0.2s',
-            opacity: hovered ? 1 : 0.93,
-            filter: hovered ? 'drop-shadow(0 4px 24px #2791d333)' : 'drop-shadow(0 2px 10px #0002)',
-          }} 
-        />
-        {/* Color tint overlay, perfectly matching the image */}
-        <div 
-          className="map-overlay" 
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            width: '100%',
-            height: '100%',
-            background: hovered
-              ? 'linear-gradient(90deg, rgba(39,145,211,0.18) 0%, rgba(255,255,255,0.08) 100%)'
-              : 'linear-gradient(90deg, rgba(39,145,211,0.09) 0%, rgba(255,255,255,0.05) 100%)',
-            borderRadius: 12,
-            pointerEvents: 'none',
-            zIndex: 2,
-            transition: 'background 0.2s',
-          }} 
-        />
-        {/* Centered loading indicator */}
-        <div style={{position:'absolute',top:'50%',left:'50%',transform:'translate(-50%,-50%)',color:'#555',fontWeight:500,zIndex:3}}>
-          {loading ? 'Loading...' : ''}
-        </div>
+      <div className="card-content" style={{padding: '12px 0'}}>
+        {cardContent}
       </div>
       <div className="card-footer">
-        <span>Respiratory condition cluster detected in Dubai Marina</span>
-        <div className="alert-tag">Hotspot</div>
+        <span style={{color:'#c00',fontWeight:600,display:'flex',alignItems:'center',gap:6}}>
+          <span style={{fontSize:22,verticalAlign:'middle'}}>⚠️</span>
+          Action Required: Review latest prediction & recommendations
+        </span>
+        <div className="alert-tag" style={{background:'#c00',color:'#fff',fontWeight:700,borderRadius:6,padding:'2px 10px',marginLeft:10}}>Review</div>
       </div>
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <button aria-label="Close" onClick={() => setModalOpen(false)} style={{ position: 'absolute', top: 12, right: 12, fontSize: 18, background: 'none', border: 'none', cursor: 'pointer', zIndex: 2 }}>&times;</button>
-        <h2>Environmental Data Table</h2>
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <table className="env-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>District</th>
-                <th>PM2.5</th>
-                <th>NO2</th>
-                <th>Ozone</th>
-                <th>Temperature</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.slice(0, 50).map((item, idx) => (
-                <tr key={idx}>
-                  <td>{item.timestamp || item.date}</td>
-                  <td>{item.district}</td>
-                  <td>{item.pm25}</td>
-                  <td>{item.no2}</td>
-                  <td>{item.ozone}</td>
-                  <td>{item.temperature}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </Modal>
     </div>
   );
 };
