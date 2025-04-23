@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  hospital-data-api:
+    build:
+      context: ./hospital
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+
+    command: bash -c "python app.py"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+
+  social-media-data-api:
+      build:
+        context: ./socialMedia
+        dockerfile: Dockerfile
+      ports:
+        - "5001:5001"
+
+      command: bash -c "python app.py"
+      environment:
+        - FLASK_APP=app.py
+        - FLASK_ENV=production
