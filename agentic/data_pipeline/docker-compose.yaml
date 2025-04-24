@@ -6,7 +6,7 @@ services:
       context: ./hospital
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5002:5002"
 
     command: bash -c "python app.py"
     environment:

@@ -98,11 +98,11 @@ def main() -> None:
                     shortened_interp = "\n".join(interpretation.split("\n")[:5]) + "\n..."
                     print(shortened_interp)
 
-                    feedback_choice = input("\nProvide feedback for this prediction? (y/n): ").lower()
+                    feedback_choice = "y" #input("\nProvide feedback for this prediction? (y/n): ").lower()
                     if feedback_choice == 'y':
                         actual_demand = max(0, predicted_demand * (1 + np.random.normal(0, 0.1)))
                         print(f"Actual demand turned out to be: {actual_demand:.0f}")
-                        approval = input("Approve this data for model improvement? (y/n): ").lower() == 'y'
+                        approval = "y" #input("Approve this data for model improvement? (y/n): ").lower() == 'y'
                         feedback_result = agent.incorporate_human_feedback(predicted_demand, actual_demand, approval)
                         print(f"Feedback result: {feedback_result['message']}")
                         logger.info(f"Feedback incorporated for region {region}: {feedback_result['message']}")

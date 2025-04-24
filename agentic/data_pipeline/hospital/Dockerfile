@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./app.py  app.py
 # RUN sudo chown -R $USERNAME app.py
 
-EXPOSE 5001
+EXPOSE 5002
 
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production

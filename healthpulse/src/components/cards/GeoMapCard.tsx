@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import ReactMarkdown from 'react-markdown';
+import Modal from '../Modal';
 
 const CSV_PATH = '/agentic/inferences.csv';
 
@@ -20,6 +21,7 @@ const GeoMapCard: React.FC = () => {
   const [latest, setLatest] = useState<InferenceRow | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -115,10 +117,67 @@ const GeoMapCard: React.FC = () => {
       <div className="card-footer">
         <span style={{color:'#c00',fontWeight:600,display:'flex',alignItems:'center',gap:6}}>
           <span style={{fontSize:22,verticalAlign:'middle'}}>⚠️</span>
-          Action Required: Review latest prediction & recommendations
+          Review latest prediction & recommendations
         </span>
-        <div className="alert-tag" style={{background:'#c00',color:'#fff',fontWeight:700,borderRadius:6,padding:'2px 10px',marginLeft:10}}>Review</div>
+        <div
+          className="alert-tag"
+          style={{background:'#c00',color:'#fff',fontWeight:700,borderRadius:6,marginLeft:10,display:'flex',alignItems:'center',justifyContent:'center',minWidth:90,minHeight:28,cursor:'pointer'}}
+          onClick={() => setModalOpen(true)}
+        >
+          Review
+        </div>
       </div>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <h2 style={{marginTop:0,fontWeight:700,fontSize:'1.2rem',textAlign:'center'}}>Latest Inference Data</h2>
+        <div style={{overflowX:'auto',margin:'18px 0',maxHeight:'60vh',overflowY:'auto',borderRadius:8}}>
+          <table style={{width:'100%',borderCollapse:'collapse',fontSize:15,background:'#fff',borderRadius:8,boxShadow:'0 1px 8px #0001'}}>
+            <thead>
+              <tr style={{background:'#f7f7fa'}}>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>Date</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>Region</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>Hospital Flu Cases</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>GP Flu Cases</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>Hospital Respiratory Cases</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>GP Respiratory Cases</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>Flu Mentions</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee'}}>Predicted Demand</th>
+                <th style={{padding:'8px 12px',border:'1px solid #eee',minWidth:240}}>Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center'}}>{latest?.date}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center'}}>{latest?.region}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center'}}>{latest?.hospital_flu_cases}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center'}}>{latest?.gp_flu_cases}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center'}}>{latest?.hospital_respiratory_cases}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center'}}>{latest?.gp_respiratory_cases}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center'}}>{latest?.flu_mentions}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',textAlign:'center',fontWeight:600,color:'#2791D3'}}>{latest?.predicted_demand}</td>
+                <td style={{padding:'8px 12px',border:'1px solid #eee',minWidth:240,maxWidth:360,whiteSpace:'pre-line',background:'#f7fafd'}}>
+                  <ReactMarkdown
+                    components={{
+                      h3: ({node, ...props}) => <h4 style={{fontSize:'1.07rem',fontWeight:700,margin:'6px 0 4px',color:'#2791D3'}} {...props} />,
+                      strong: ({node, ...props}) => <strong style={{color:'#222',fontWeight:600}} {...props} />, 
+                      ul: ({node, ...props}) => <ul style={{margin:'4px 0 4px 18px',padding:0,color:'#444'}} {...props} />, 
+                      li: ({node, ...props}) => <li style={{marginBottom:2,paddingLeft:2}} {...props} />,
+                      p: (props) => <p style={{margin:'4px 0'}}>{props.children}</p>,
+                    }}
+                  >
+                    {latest?.interpretation || ''}
+                  </ReactMarkdown>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button
+          style={{display:'block',margin:'28px auto 0 auto',background:'#2791D3',color:'#fff',fontWeight:600,border:'none',borderRadius:5,padding:'10px 28px',fontSize:16,cursor:'pointer',boxShadow:'0 2px 8px #2791d344'}}
+          onClick={() => setModalOpen(false)}
+        >
+          Review and Update
+        </button>
+      </Modal>
     </div>
   );
 };

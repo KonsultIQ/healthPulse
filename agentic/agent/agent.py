@@ -26,7 +26,7 @@ class AgenticAILogistics:
     def fetch_data(self, region: str, date: str) -> Tuple[Dict, Dict]:
         """Fetch hospital and social media data for the given region and date."""
         logger.info(f"Fetching data for region {region}, date {date}")
-        hospital_url = f"http://localhost:5000/hospital_data?region={region}&date={date}"
+        hospital_url = f"http://localhost:5002/hospital_data?region={region}&date={date}"
         social_url = f"http://localhost:5001/social_data?region={region}&date={date}"
         try:
             hospital_response = requests.get(hospital_url)
