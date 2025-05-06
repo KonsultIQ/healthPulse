@@ -16,6 +16,7 @@ Our solution addresses all key requirements of the Logistics Challenge:
 
 Dubai's healthcare system faces unique logistics challenges:
 - 85% expatriate population creating diverse healthcare needs
+- Seasonal fluctuation in population & desease patterns (summer/winter)
 - Extreme climate requiring strict temperature control for medications
 - High prevalence of chronic conditions (20% diabetes rate, leading cardiovascular issues)
 - Seasonal fluctuations in both population and disease patterns

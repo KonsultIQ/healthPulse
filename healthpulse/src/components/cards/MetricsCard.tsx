@@ -101,6 +101,33 @@ const MetricsCard: React.FC<{ timeRange: string; district: string }> = ({ timeRa
       </div>
       <div className="card-footer">
         <span>System performance exceeds initial projections by 23%</span>
+        <button
+          style={{
+            marginLeft: 18,
+            padding: '5px 14px',
+            borderRadius: 6,
+            border: 'none',
+            background: '#2791D3',
+            color: '#fff',
+            fontWeight: 600,
+            cursor: 'pointer',
+            fontSize: 15,
+            boxShadow: '0 1px 4px #eee',
+            transition: 'background 0.2s',
+          }}
+          onClick={e => {
+            e.stopPropagation();
+            if (typeof window !== 'undefined') {
+              console.log('[MetricsCard] Dispatching dashboard-navigate event');
+              const event = new CustomEvent('dashboard-navigate', {
+                detail: { tab: 'Supply Chain', scrollTo: 'MedicationStock-chart' }
+              });
+              window.dispatchEvent(event);
+            }
+          }}
+        >
+          View Metric in Context
+        </button>
       </div>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <button aria-label="Close" onClick={() => setModalOpen(false)} style={{ position: 'absolute', top: 12, right: 12, fontSize: 18, background: 'none', border: 'none', cursor: 'pointer', zIndex: 2 }}>&times;</button>

@@ -6,10 +6,25 @@ const Header: React.FC<{
   district: string;
   setDistrict: (v: string) => void;
 }> = ({ timeRange, setTimeRange, district, setDistrict }) => (
-  <header>
+  <header style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    zIndex: 110,
+    background: '#fff',
+    boxShadow: '0 2px 8px #eee',
+    borderBottom: '1px solid #e3e6ea',
+    minHeight: 72,
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 32px',
+    maxWidth: '100vw',
+    boxSizing: 'border-box',
+  }}>
     <div className="logo">
       <div className="logo-icon">HP</div>
-      <h1>HealthPulse Dashboard</h1>
+      <h1>HealthPulse</h1>
     </div>
     <div className="dashboard-controls">
       <select
