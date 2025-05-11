@@ -88,7 +88,7 @@ class AgenticAILogistics:
         2. Key influential factors.
         3. Logistics team recommendations.
         4. Potential risks.
-        Response must be concise, professional, and objective.
+        Response must be concise, professional, and objective and please be SHORT as possible, you response need to be short and to not contain any special sign like markdown signs.
         """
         try:
             response = self.client.chat.completions.create(
