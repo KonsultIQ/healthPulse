@@ -1,0 +1,49 @@
+services:
+  agent:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - WAIT_TIME=600
+    command: bash -c "python main.py"
+    volumes:
+      - ./agent:/app
+    network_mode: host
+
+  hospital-data-api:
+    build:
+      context: ./data_pipeline/hospital
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
+    command: bash -c "python app.py"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+
+    network_mode: host
+
+  social-media-data-api:
+    build:
+      context: ./data_pipeline/socialMedia
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    command: bash -c "python app.py"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+    network_mode: host
+
+  completion-api:
+    build:
+      context: ./completion_api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/host_data
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    network_mode: host

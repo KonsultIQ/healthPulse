@@ -1,0 +1,5 @@
+requests==2.26.0
+scikit-learn==1.6.1
+numpy==1.21.2
+openai
+tenacity

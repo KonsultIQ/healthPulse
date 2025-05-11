@@ -1,0 +1,30 @@
+{
+    "Al Noor Hospital": {
+      "FluVax": 50,
+      "AntiViral": 75,
+      "PainRelief": 100,
+      "Amoxicillin": 0,
+      "Paracetamol": 0
+    },
+    "City Hospital": {
+      "FluVax": 120,
+      "AntiViral": 90,
+      "PainRelief": 110,
+      "Amoxicillin": 100,
+      "Paracetamol": 100
+    },
+    "District 2": {
+      "FluVax": 80,
+      "AntiViral": 85,
+      "PainRelief": 95,
+      "Amoxicillin": 100,
+      "Paracetamol": 100
+    },
+    "District 3": {
+      "FluVax": 110,
+      "AntiViral": 105,
+      "PainRelief": 115,
+      "Amoxicillin": 100,
+      "Paracetamol": 100
+    }
+  }
